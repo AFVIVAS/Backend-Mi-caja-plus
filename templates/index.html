@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Sesión</title>
+    <link rel="stylesheet" href="/static/styles/index.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/LogoMiCajaPlus.png') }}">
+</head>
+<body>
+    <main id="ppal">
+        <section id="panelpadre">
+            <section id="hijo">
+                <figure id="imgmarca">
+                    <img src="/static/img/LogoMiCajaPlus.png" alt="image">
+                </figure>
+                <h1 id="nombremarca">MiCaja+</h1>
+            </section>
+            <form action="" id="formulario">
+                <div class="cont_campos">
+                    <label for="cedula_tendero">Cédula</label>
+                    <figure id="imgcedula">
+                        <img src="/static/img/ic_cedula.png" alt="cedula">
+                    </figure>
+                    <input type="text" inputmode="numeric" name="cedula_tendero" id="cedula_tendero" maxlength="10"
+                    minlength="7" pattern="[0-9]{7,10}" title="Tu cedula no es correcta" tabindex="1"
+                    required>
+                </div >
+                <div class="cont_campos">
+                    <label for="telefono_tendero">N° de teléfono</label>
+                    <figure id="imgcandado">
+                        <img src="/static/img/ic_candado.png" alt="candado">
+                    </figure>
+                    <input type="password" inputmode="numeric" name="telefono_tendero" id="telefono_tendero"
+                    maxlength="10" minlength="10" pattern="[0-9]{10}" title="Tu numero movil no es correcto"
+                    tabindex="2" required>
+                </div>
+                <div id="cont_entrar">
+                    <button type="submit" id="btn_entrar" tabindex="3">INICIAR SESIÓN</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

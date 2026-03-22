@@ -1,4 +1,4 @@
-from flask import session, request, jsonify
+from flask import session, request, jsonify,render_template
 from models.tenderos import Tenderos
 from argon2 import PasswordHasher
 
@@ -8,7 +8,7 @@ def cargar_rutas_Tenderos(app):
 
     @app.route("/")
     def index():
-        return "micaja+"
+        return render_template("index.html")
 
     @app.route("/addtendero", methods=["POST"])
     def crear_tendero():

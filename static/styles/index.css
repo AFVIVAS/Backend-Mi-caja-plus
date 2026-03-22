@@ -1,0 +1,158 @@
+*{
+    box-sizing: border-box;
+    transition: all 0.7s;
+}
+
+:root{
+    --color-fondo:#F0ECFA;
+    --color-campos:#DED3FF;
+    --color-button:#492C6F;
+    --color-texto:#010101;
+    --color-texto-claro:#46454B;
+}
+
+::placeholder, ::-webkit-input-placeholder :-moz-placeholder{
+    color: inherit;
+}
+
+body,html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: var(--color-fondo);
+    font-family:'Arial Narrow Bold', sans-serif;
+}
+
+figure{
+    margin: 0;
+    padding: 0;
+}
+
+    figure img{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+h1{
+    margin: 0;
+    padding: 0;
+}   
+
+/*-----------------------SEMANTICOS----------------------*/
+
+main#ppal{
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    background: var(--color-fondo);
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+section#panelpadre{
+    background:var(--color-fondo);
+    width: 90%;
+    background: var(--color-fondo);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 40px;
+}
+
+section#hijo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form#formulario{
+    width: 100%;
+}
+
+
+div#cont_entrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 10px 0 10px;
+}
+
+label{
+    font-size: 1em;
+}
+
+
+/*---------------------OBJETOS---------------------*/
+
+
+#imgmarca{
+    max-width: 150px;
+}
+
+#nombremarca{
+    font-size: 2.2em;
+    color: var(--color-texto-claro);
+}
+
+#btn_entrar{
+    padding: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 25px;
+    background: var(--color-button);
+    margin-bottom: 20px;
+    color: var(--color-fondo);
+    font-size: 1em;
+} 
+
+/*--------------------CLASES------------------*/
+
+.cont_campos{
+    position: relative;
+    margin: 30px 10px 0 10px;
+    z-index: 4;
+}
+
+    .cont_campos input{
+        background: var(--color-campos);
+        border: none;
+        border-radius: 25px;
+        padding: 16px;
+        width: 100%;
+        position: relative;
+        margin-top: 10px;
+        padding-left: 60px;
+        z-index: 5;
+    }
+
+    .cont_campos figure{
+        left: 0;
+        height: 50px;
+        width: 50px;
+        padding: 13px;
+        position: absolute;
+        transform: translateY(16%);
+        z-index: 6;
+    }
+  
+   
+
+@media screen and (min-width: 700px){
+
+section#panelpadre{
+    max-width: 45%;
+}
+
+}
+
+@media screen and (min-width:1200px)  {
+
+section#panelpadre{
+    max-width: 30%;
+}
+
+}  

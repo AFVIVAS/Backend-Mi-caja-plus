@@ -6,7 +6,7 @@ def obtenerConexion():
                                    user="root",
                                    port = 3306,
                                    password = "REDACTED",
-                                   database="micajaplus")
+                                   database="pruebamicaja")
 
 ###return mysql.connector.connect(host="localhost",
                                    ##user="micajadb_admin",

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 from flask_cors import CORS
 from datetime import timedelta
 
@@ -10,6 +10,7 @@ from routes.estadisticas import cargar_rutas_estadisticas
 from routes.inventario import cargar_rutas_inventario
 from routes.abonos import cargar_ruta_abonos
 from routes.sesion import cargar_rutas_sesion
+
 
 app=Flask(__name__)
 app.secret_key = "micajaplus_secret_key"

@@ -24,7 +24,7 @@ def cargar_ruta_abonos(app):
                 
                     if resultadoAbono > 0:
                         clienteModel.actualizarSaldo(datos['cedula'], datos['idTendero'], nuevoSaldo)
-                        return jsonify({"mensaje": "Abono exitoso", "nuevoSaldo": nuevoSaldo}), 201
+                        return jsonify({"mensaje": "Abono exitoso", "nuevoSaldo": nuevoSaldo}), 200
                     else:
                         return jsonify({"error": "No se pudo registrar el abono en la tabla"}), 500
                 else:
