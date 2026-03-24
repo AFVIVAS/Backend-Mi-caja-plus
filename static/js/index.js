@@ -42,7 +42,7 @@ function iniciarSesion(){
             if (response.error){
                 cajaError.textContent="Credenciales incorrectas. Verifica tus datos.";
             }else{
-                window.location.href="/panel";
+                window.location.href="/dashboard";
             }
         })
     })

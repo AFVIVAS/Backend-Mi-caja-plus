@@ -1,8 +1,12 @@
-from flask import request, jsonify
+from flask import request, jsonify,render_template
 from datetime import datetime
 from models.estadisticas import Estadisticas
 
 def cargar_rutas_estadisticas(app):
+
+    @app.route("/dashboard")
+    def panel_control():
+        return render_template("dashboard.html")
 
     @app.route("/consultarEstadisticas", methods=["POST"])
     def consulta_estadisticas():
