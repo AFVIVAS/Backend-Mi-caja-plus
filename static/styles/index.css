@@ -9,6 +9,7 @@
     --color-button:#492C6F;
     --color-texto:#010101;
     --color-texto-claro:#46454B;
+    --color-texto-error:red;
 }
 
 ::placeholder, ::-webkit-input-placeholder :-moz-placeholder{
@@ -39,7 +40,7 @@ figure{
 h1{
     margin: 0;
     padding: 0;
-}   
+}  
 
 /*-----------------------SEMANTICOS----------------------*/
 
@@ -73,21 +74,19 @@ form#formulario{
     width: 100%;
 }
 
-
 div#cont_entrar{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 40px 10px 0 10px;
+    margin: 10px 10px 0 10px;
 }
 
 label{
     font-size: 1em;
 }
 
-
 /*---------------------OBJETOS---------------------*/
-
 
 #imgmarca{
     max-width: 150px;
@@ -98,13 +97,20 @@ label{
     color: var(--color-texto-claro);
 }
 
+#mensaje{
+    text-align: center;
+    margin: 0px 10px 10px 0px;
+    font-size: 14px;
+    color:var(--color-texto-error);
+}
+
 #btn_entrar{
     padding: 16px;
     width: 100%;
     border: none;
     border-radius: 25px;
     background: var(--color-button);
-    margin-bottom: 20px;
+    margin: 20px 10px 10px 10px;
     color: var(--color-fondo);
     font-size: 1em;
 } 
@@ -130,7 +136,6 @@ label{
     }
 
     .cont_campos figure{
-        left: 0;
         height: 50px;
         width: 50px;
         padding: 13px;
@@ -139,20 +144,16 @@ label{
         z-index: 6;
     }
   
-   
-
 @media screen and (min-width: 700px){
 
-section#panelpadre{
-    max-width: 45%;
-}
-
+    section#panelpadre{
+        max-width: 45%;
+    }
 }
 
 @media screen and (min-width:1200px)  {
 
-section#panelpadre{
-    max-width: 30%;
+    section#panelpadre{
+        max-width: 30%;
+    }
 }
-
-}  
