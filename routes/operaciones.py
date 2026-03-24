@@ -81,15 +81,19 @@ def cargar_rutas_operaciones(app):
 
             inventario = Inventario()
 
+            
+
             sinonimo = inventario.buscarSinonimoProducto(data)
 
             if sinonimo :
 
                 nombre = sinonimo["nombre"]
 
+            
             producto_inventario = inventario.buscarProducto(cedulaTendero,nombre,presentacion)
+            
 
-
+            print("llegue aca")
             if producto_inventario:
 
                 cantidad_stock = producto_inventario["cantidad"]
@@ -144,8 +148,7 @@ def cargar_rutas_operaciones(app):
 
         except Exception as e:
             print(f"Error detectado: {e}")
-    # SIEMPRE usa str(e) para que jsonify funcione
-        return jsonify({"Error interno": str(e)}), 500
+            return jsonify({"Error interno": str(e)}), 500
     
     @app.route("/crearcosto", methods=["POST"])
     def crear_costo():

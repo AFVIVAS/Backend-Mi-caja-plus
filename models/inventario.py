@@ -1,6 +1,7 @@
 from conexion import obtenerConexion
 
 class Inventario():
+
     def buscarSinonimoProducto(self,producto):
         conexion=obtenerConexion()
         cursor=conexion.cursor(dictionary=True)
@@ -12,6 +13,7 @@ class Inventario():
         return resultado
 
     def buscarProducto(self,idTendero,nombre,presentacion):
+
         conexion=obtenerConexion()
         cursor=conexion.cursor(dictionary=True)
         cursor.execute("""SELECT idInventario, cantidad,valorVenta, valorCompra FROM inventario WHERE idTendero = %s AND nombreProducto = %s AND presentacion = %s """,(idTendero,nombre,presentacion))
