@@ -1,0 +1,362 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --colorFondo: #F0ECFA;
+    --azulVenta: #D0EFFF;
+    --azulCostos: #E0E7FF;
+    --rojoGastos: #FFDADA;
+    --amarilloFiados: #FEF3C7;
+    --verdeUtilidad: #D1FAE5;
+    --colorTarjeta: #DED3FF;
+    --moradoJulio: #4A306D;
+    --fuente-principal: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--colorFondo);
+    font-family: var(--fuente-principal);
+}
+
+body,html {
+    overflow-x: hidden;
+    /* Esto evita que se vea lo que sale por los lados */
+    width: 100%;
+}
+
+
+#caja_hijo1 {
+    position: sticky;
+    align-items: center;
+    background-color: var(--colorTarjeta);
+    width: 100%;
+    border-radius: 15px;
+    height: 80px;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#caja_hijo2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+#cajaTarjetas,
+#cajaHistorial {
+    width: 92%;
+    max-width: 450px;
+    height: 480px;
+    border: solid 2px #B39DDB;
+    background-color: var(--colorTarjeta);
+    border-radius: 25px;
+    margin: 15px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cajaMenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#logoCajaPlus img {
+    width: 50px;
+    height: auto;
+    display: block;
+}
+
+#logoCajaPlus {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#btnMenu {
+    display: flex;
+    justify-content: flex-end;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#cajaTarjetas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    /*Impide que el contenido empuje el ancho de las columnas */
+    gap: 12px;
+    padding: 15px;
+
+}
+
+#tarjetaFinal {
+    grid-column: 1 / 3;
+    /* Ocupa las dos columnas */
+    background-color: var(--verdeUtilidad);
+}
+
+#cajaHistorial {
+    background-color: var(--colorTarjeta);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    min-height: 150px;
+}
+
+
+#nombreTendero {
+    flex: 1;
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    max-width: 90px;
+    white-space: nowrap;
+    /* Prohibido saltar de línea */
+    overflow: hidden;
+    /* Corta lo que sobre */
+    text-overflow: ellipsis;
+    /* Agrega "..." si el nombre es muy largo */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#tituloHis {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+#nUtilidad {
+    font-size: 1.8rem;
+    margin-top: 5px;
+}
+
+#menuLateral {
+    background-color: var(--colorFondo);
+    border: solid 2px #B39DDB;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    border-radius: 20px;
+    top: 80px;
+    right: 0;
+    width: 280px;
+    padding: 25px;
+}
+
+#cabeceraMenu {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#cerrarMenu {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#contBotones {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    gap: 5px;
+}
+
+
+#btnBuscar {
+    background-color: var(--moradoJulio);
+}
+
+#btnLimpiar {
+    background-color: #B39DDB;
+}
+
+#tarjetaUno {
+    background-color: var(--azulVenta);
+}
+
+#tarjetaDos {
+    background-color: var(--azulCostos);
+}
+
+#tarjetaTres {
+    background-color: var(--rojoGastos);
+}
+
+#tarjetaCuatro {
+    background-color: var(--amarilloFiados);
+}
+
+/*---------------------clases------------------- */
+.alineTarjeta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.iconosTarjetas img {
+    width: 35px;
+    height: auto;
+    display: block;
+}
+
+.tarjetas p {
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    /* Prohibido saltar de línea */
+    overflow: hidden;
+    /* Corta lo que sobre */
+    text-overflow: ellipsis;
+    /* Pone "..." si no cabe */
+
+    display: block;
+}
+
+.tarjetas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /*evita que la tarjeta crezca más que su celda */
+}
+
+.menu-cerrado {
+    transform: translateX(100%);
+}
+
+.menu-abierto {
+    transform: translateX(0);
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+}
+
+.grupo-input label {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.grupo-input input,
+.grupo-input select {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background: white;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.botones {
+    margin-top: 10px;
+    padding: 15px;
+    color: var(--colorFondo);
+    border: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*--------------------------------web---------------------------------------*/
+
+@media (min-width: 1024px) {
+
+    #logoCajaPlus img {
+        width: 70px;
+        height: auto;
+    }
+
+    #nUtilidad {
+    font-size: 3rem;
+    margin-top: 5px;
+}
+
+   #caja_hijo2 {
+        display: flex;          
+        flex-direction: row;    
+        justify-content: center; 
+        gap: 40px;              
+        padding: 20px 2%;
+    }
+
+    #cajaTarjetas, #cajaHistorial {
+        flex: 1;               
+        max-width: 45%;       
+        height: 650px;          
+        margin: 20px 0 0 0;             
+        background-color: var(--colorTarjeta);
+        border: solid 3px #B39DDB;      
+    }
+
+    #cajaTarjetas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1.2fr;
+        gap: 20px;
+        padding: 30px;
+    }
+
+
+    
+    
+    /*----------------------------------clases------------------------------------*/
+    
+    
+    .alineTarjeta {
+        display: flex;        
+        align-items: center;
+        gap: 15px;           
+        margin-bottom: 20px;
+    }
+
+    .iconosTarjetas img {
+        width: 60px;           
+    }
+
+    .tarjetas h4 {
+        font-size: 1.8rem;     
+    }
+
+    .tarjetas p {
+        font-size: 2rem;    
+        font-weight: 80%;
+        flex-wrap: wrap;
+    }
+
+    .botones:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+    transition: 0.3s;
+    }
+}
