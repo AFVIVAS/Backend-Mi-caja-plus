@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Sesión</title>
+    <title>Inicio sesión</title>
     <link rel="stylesheet" href="/static/styles/index.css">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/LogoMiCajaPlus.png') }}">
+    <script src="/static/js/index.js" defer></script>
+    <link rel="icon" type="image/png" href="/static/img/LogoMiCajaPlus.png">
 </head>
 <body>
     <main id="ppal">
@@ -16,7 +17,7 @@
                 </figure>
                 <h1 id="nombremarca">MiCaja+</h1>
             </section>
-            <form action="" id="formulario">
+            <form id="formulario">
                 <div class="cont_campos">
                     <label for="cedula_tendero">Cédula</label>
                     <figure id="imgcedula">
@@ -36,6 +37,7 @@
                     tabindex="2" required>
                 </div>
                 <div id="cont_entrar">
+                    <h5 id="mensaje"></h5>
                     <button type="submit" id="btn_entrar" tabindex="3">INICIAR SESIÓN</button>
                 </div>
             </form>
