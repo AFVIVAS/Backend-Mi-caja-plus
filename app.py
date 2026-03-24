@@ -3,7 +3,6 @@ from flask_cors import CORS
 from datetime import timedelta
 
 from routes.clientes import cargar_rutas_clientes
-# from routes.creditos import cargar_rutas_credito
 from routes.tenderos import cargar_rutas_Tenderos
 from routes.operaciones import cargar_rutas_operaciones
 from routes.estadisticas import cargar_rutas_estadisticas
@@ -26,7 +25,6 @@ CORS(
 
 cargar_rutas_operaciones(app)
 cargar_rutas_clientes(app)
-# cargar_rutas_credito(app)
 cargar_rutas_Tenderos(app)
 cargar_rutas_estadisticas(app)
 cargar_rutas_inventario(app)

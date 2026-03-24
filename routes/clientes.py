@@ -38,7 +38,7 @@ def cargar_rutas_clientes(app):
             cantidad = data['cantidad']
             cedulaTendero = data['idTendero']
             cedulaCliente = data['idcliente']
-          
+        
             print(data)
             sql = """SELECT p.idProductos, i.valorVenta FROM diccionarioproductos d JOIN productos p ON d.idProductos = p.idProductos JOIN inventario i ON p.idProductos = i.idProductos WHERE d.sinonimo = %s AND p.presentacion = %s AND i.cantidad >= %s;"""
             cursor.execute(sql,(nombre,presentacion, cantidad,))
@@ -68,7 +68,7 @@ def cargar_rutas_clientes(app):
                     conexion.commit()
                     return jsonify("resultado")
             else:
-                 return jsonify("sinResultado")
+                    return jsonify("sinResultado")
         except Exception as e:
                     return jsonify("error")
         

@@ -1,7 +1,6 @@
 from flask import session, request, jsonify,render_template
 from models.tenderos import Tenderos
 from argon2 import PasswordHasher
-
 hp=PasswordHasher(hash_len=32)
 
 def cargar_rutas_Tenderos(app):

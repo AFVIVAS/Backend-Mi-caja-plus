@@ -13,16 +13,27 @@ class Operaciones:
     conexion.close()
     return resultado
 
-  def insertar_costo(self,data_costo):
-    conexion=obtenerConexion()
-    cursor=conexion.cursor()
-    cursor.execute("INSERT INTO costos (idTendero,mensaje,valor,proveedor) VALUES (%s,%s,%s,%s)",
-                   (data_costo['idTendero'],data_costo['mensaje'],data_costo['precioCompra'],data_costo['proveedor']))
-    conexion.commit()
-    resultado=cursor.rowcount
-    cursor.close()
-    conexion.close()
-    return resultado
+  def aumentar_saldo(self, data, idCliente):
+      conexion=obtenerConexion()
+      valor = data["valor"]
+      cedulaTendero = data["idTendero"]
+      print(valor)
+      cursor=conexion.cursor()
+      sql = """UPDATE cliente SET saldo = saldo + %s WHERE idCliente = %s AND idTendero = %s;"""
+      cursor.execute(sql,(valor,idCliente,cedulaTendero,))
+      conexion.commit()
+      return True
+
+  def insertar_costo(self, data_costo):
+      conexion = obtenerConexion()
+      cursor = conexion.cursor()
+      cursor.execute("INSERT INTO costos (idTendero, mensaje, valor, proveedor) VALUES (%s, %s, %s, %s)",
+                  (data_costo['idTendero'], data_costo['mensaje'], data_costo['precioCompra'], data_costo['proveedor']))
+      conexion.commit()
+      resultado = cursor.rowcount
+      cursor.close()
+      conexion.close()
+      return resultado
 
   def insertar_gasto(self,data_gasto):
     conexion=obtenerConexion()

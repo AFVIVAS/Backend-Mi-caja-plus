@@ -5,7 +5,6 @@ def cargar_rutas_sesion(app):
     @app.route("/sesion", methods=["GET"])
     def obtener_sesion():
         try:
-            # Verificamos si la clave 'cedula' existe en la sesión del servidor
             if 'cedula' in session:
                 return jsonify({
                     "logueado": True,

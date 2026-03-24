@@ -1,11 +1,10 @@
 from conexion import obtenerConexion
 
 class Inventario():
-
     def buscarSinonimoProducto(self,producto):
         conexion=obtenerConexion()
         cursor=conexion.cursor(dictionary=True)
-        cursor.execute("""SELECT productos.nombre, productos.presentacion FROM productos INNER JOIN diccionarioproductos ON productos.idProductos = diccionarioproductos.idProductos WHERE diccionarioproductos.sinonimo = %s """,(producto.get("nombre"),))
+        cursor.execute("""SELECT productos.nombre FROM productos INNER JOIN diccionarioproductos ON productos.idProductos = diccionarioproductos.idProductos WHERE diccionarioproductos.sinonimo = %s """,(producto.get("nombre"),))
         resultado=cursor.fetchone()
         cursor.close()
         conexion.close()
@@ -13,10 +12,9 @@ class Inventario():
         return resultado
 
     def buscarProducto(self,idTendero,nombre,presentacion):
-
         conexion=obtenerConexion()
         cursor=conexion.cursor(dictionary=True)
-        cursor.execute("""SELECT idInventario, cantidad,valorCompra FROM inventario WHERE idTendero = %s AND nombreProducto = %s AND presentacion = %s """,(idTendero,nombre,presentacion))
+        cursor.execute("""SELECT idInventario, cantidad,valorVenta, valorCompra FROM inventario WHERE idTendero = %s AND nombreProducto = %s AND presentacion = %s """,(idTendero,nombre,presentacion))
         resultado=cursor.fetchone()
         cursor.close()
         conexion.close()
@@ -74,30 +72,11 @@ class Inventario():
         cursor.close()
         conexion.close()
 
-    def obtenerPrecio(self,Producto):
-        conexion = obtenerConexion()
-        cursor = conexion.cursor(dictionary=True)
-        try:
-    
-            cursor.execute( """
-                SELECT valorVenta,cantidad
-                FROM inventario 
-                WHERE idTendero = %s  AND nombreProducto = %s AND presentacion = %s
-            """, (Producto["idTendero"], Producto["nombre"], Producto["presentacion"])), 
-
-        
-            resultado= cursor.fetchone()
-            return resultado 
-        finally:    
-            cursor.close()
-            conexion.close()
-        
-
-    def buscarCategoria(self, categoria):
+    def sugerirProductos(self,producto):
         conexion=obtenerConexion()
         cursor=conexion.cursor(dictionary=True)
-        nombre = f"%{categoria.get('nombre')}%"
-        cursor.execute("""Select idInventario,nombreProducto,presentacion,cantidad,valorVenta,valorCompra from inventario where idTendero = %s AND nombreProducto LIKE %s""",(producto.get("idTendero"),nombre))
+        nombre = f"%{producto.get("nombre")}%"
+        cursor.execute("""Select idTendero, idInventario,nombreProducto,presentacion,cantidad,valorVenta,valorCompra from inventario where idTendero = %s AND nombreProducto LIKE %s""",(producto.get("idTendero"),nombre))
         resultado=cursor.fetchall()
         cursor.close()
         conexion.close()
@@ -113,8 +92,7 @@ class Inventario():
         cursor.close()
         conexion.close()
 
-
-    def obtenerPrecio(self,Producto):
+    def obtenerPrecio(self,producto):
         conexion = obtenerConexion()
         cursor = conexion.cursor(dictionary=True)
         try:
@@ -123,17 +101,11 @@ class Inventario():
                 SELECT valorVenta,cantidad
                 FROM inventario 
                 WHERE idTendero = %s  AND nombreProducto = %s AND presentacion = %s
-            """, (Producto["idTendero"], Producto["nombre"], Producto["presentacion"])), 
+            """, (producto["idTendero"], producto["nombre"], producto["presentacion"])), 
 
         
             resultado= cursor.fetchone()
             return resultado 
         finally:    
             cursor.close()
-            conexion.close()    
-        
-
-
-
-
-
+            conexion.close()
