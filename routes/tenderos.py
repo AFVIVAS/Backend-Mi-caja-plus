@@ -1,6 +1,7 @@
-from flask import request, jsonify,render_template,url_for,redirect
+from flask import request, jsonify,render_template,url_for,redirect,session
 from models.tenderos import Tenderos
 from argon2 import PasswordHasher
+from argon2.exceptions import VerificationError, InvalidHashError
 
 hp=PasswordHasher(hash_len=32)
 
@@ -20,7 +21,6 @@ def cargar_rutas_Tenderos(app):
         try:
             
             data = request.get_json()
-            print("Datos recibidos en login:", data)
             cedula = data.get("cedula")
             telefono = data.get("telefono")
     
@@ -30,14 +30,19 @@ def cargar_rutas_Tenderos(app):
 
             tendero_model = Tenderos()
             usuario = tendero_model.validar_login(cedula)
-            print(f"datos recibidos consulta",usuario)
             if not usuario:
                 return jsonify({"error": "Credenciales incorrectas"}), 401
             try:
                 hp.verify(usuario["llave"], telefono)
-            except:
+            except (VerificationError, InvalidHashError):
                 return jsonify({"error":"Credenciales incorrectas"}), 401
 
+            session.clear()
+            session.permanent = True
+            session['cedula'] = usuario["cedula"]
+            session['nombre'] = usuario["nombre"]
+
+            usuario.pop("llave", None)
             return jsonify(usuario), 200
 
         except Exception as e:
@@ -66,14 +71,14 @@ def cargar_rutas_Tenderos(app):
     def crear_tendero():
         try:
             data = request.get_json()
-            print("Datos recibidos:", data)
-            cedula = data["cedula"]
-            telefono = data["telefono"]
-            nombre = data["nombre"]
+            cedula = data.get("cedula")
+            telefono = data.get("telefono")
+            nombre = data.get("nombre")
 
-            hash_telefono=hp.hash(telefono)
             if not cedula or not telefono or not nombre:
                 return jsonify({"error": "Faltan datos"}), 400
+
+            hash_telefono=hp.hash(telefono)
 
             tendero_model = Tenderos()
             resultado=tendero_model.crear_tendero(cedula,hash_telefono,nombre)
@@ -84,4 +89,4 @@ def cargar_rutas_Tenderos(app):
 
         except Exception as e:
             print("Error al crear tendero:", e)
-            return jsonify({"error"}), 500   
+            return jsonify({"error": "No se pudo crear el tendero"}), 500   

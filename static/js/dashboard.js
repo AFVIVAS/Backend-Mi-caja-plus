@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Enviando datos a Python:", dataEnviar);
 
         try {
-            const respuesta = await fetch('http://192.168.12.102:4000/consultarEstadisticas', {
+            const respuesta = await fetch('/consultarEstadisticas', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dataEnviar)
